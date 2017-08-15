@@ -1,7 +1,7 @@
 # Bearbk Converter
 
 `bearbk-converter` is a quick utility that allows you to convert Bear Writer's backup files ".bearbk" into folder including all your notes as ".txt" or ".md" files, with correct creation/modification dates.
-As a secondary option, `bearbk-converter` can also automatically version your notes with git, for those of you who want to be able to keep track of your files history.
+for those of you who want to be able to keep track of your files' history, `bearbk-converter` can also automatically version your notes with git.
 
 ## Dependencies
 
@@ -16,11 +16,12 @@ As a secondary option, `bearbk-converter` can also automatically version your no
 ## Basic Usage
 
 Global usage : `bearbk-converter path/to/backup.bearbk`
+
 Local usage :  `bash bearbk-converter.sh path/to/backup.bearbk`
 
 This will output a "BEAR_BACKUP" folder next to the archive, including all your notes as .txt, with correct creation date and modification dates.
 
-** Warning ** : It WONT work if there is spaces in path and or bearbk archive file name. You may have to rename it to make it work. See known limitations.
+**Warning** : It WON'T work if there is spaces in path and/or bearbk archive file name. You may have to rename it to make it work. See known limitations.
 
 ## Options
 
