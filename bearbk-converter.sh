@@ -139,6 +139,8 @@ cd "$EXEC_LOCATION";
 ## Commit on Git
 if is_set $GITPATH; then
 
+    find "$GITPATH" -not -name ".git" -delete
+
     cp -f "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"
 
     cd "$GITPATH";
