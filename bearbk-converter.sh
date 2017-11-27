@@ -139,9 +139,9 @@ cd "$EXEC_LOCATION";
 ## Commit on Git
 if is_set $GITPATH; then
 
-    find "$GITPATH" -not -name ".git" -delete
+    find "$GITPATH"/* -not -name ".git" -exec rm -r "{}" +
 
-    cp -f "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"
+    cp -rf "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"
 
     cd "$GITPATH";
     git add -A;
