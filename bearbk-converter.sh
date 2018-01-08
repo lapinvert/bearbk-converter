@@ -5,7 +5,7 @@ set -e ## The script should stop on error
 ## HELPER FUNCTIONS
 help_error() {
     if [ $# -gt 0 ]; then echo $1; fi
-    echo 'Basic usage : bw-backup-converter [options] path/to/archive'
+    echo 'Basic usage : bearbk-converter [options=] path/to/archive'
     echo 'Available options are :'
     echo '    --markdown to output .md files instead of .txt'
     echo '    -g --gitpath to specify the local path to a git repository to which the backed up data will be automatically moved, commited and pushed.'
@@ -139,7 +139,7 @@ cd "$EXEC_LOCATION";
 ## Commit on Git
 if is_set $GITPATH; then
 
-    find "$GITPATH"/* -not -name ".git" -exec rm -r "{}" +
+    find "$GITPATH"/* -not -name ".git" -exec rm -rf "{}" +
 
     cp -rf "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"
 
