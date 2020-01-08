@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e ## The script should stop on error
+shopt -s extglob; ## Enables extglob extension to use rm !()
 
 ## HELPER FUNCTIONS
 help_error() {
@@ -54,7 +55,7 @@ done
 ## Basic variable assignments and error checks
 EXEC_LOCATION=`pwd`
 
-if is_set $GITPATH && ! is_directory "$GITPATH"/".git"; then help_error "Error : This is not a git repository"; fi
+#if is_set $GITPATH && ! is_directory "$GITPATH"/".git"; then help_error "Error : This is not a git repository"; fi
 
 BW_ARCHIVE_ARGUMENT=$1
 if ! file_exists $BW_ARCHIVE_ARGUMENT; then help_error "Error : Archive File Path is not valid"; fi
@@ -139,7 +140,12 @@ cd "$EXEC_LOCATION";
 ## Commit on Git
 if is_set $GITPATH; then
 
-    find "$GITPATH"/* -not -name ".git" -exec rm -rf "{}" +
+    ## Started to throw "fts_read: no such file or directory errors"
+    ## find "$GITPATH"/* -not -name ".git" -exec rm -rf "{}" +
+
+    cd "$GITPATH";
+    rm -rf !(".git");
+    cd "$EXEC_LOCATION";
 
     cp -rf "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"
 
