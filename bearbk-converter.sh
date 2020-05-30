@@ -144,7 +144,8 @@ if is_set $GITPATH; then
     ## find "$GITPATH"/* -not -name ".git" -exec rm -rf "{}" +
 
     cd "$GITPATH";
-    rm -rf !(".git");
+    shopt -s extglob; # Needed to use !() synthax
+    rm -rf -- !(".git");
     cd "$EXEC_LOCATION";
 
     cp -rf "$BW_ARCHIVE_LOCATION"/"$TMP_DIR_NAME"/* "$GITPATH"

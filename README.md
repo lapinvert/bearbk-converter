@@ -10,9 +10,10 @@ For those of you who want to be able to keep track of your files' history, `bear
 
 ## Global Installation
 
-`cp bearbk-converter.sh /usr/local/bin/bearbk-converter`
-
-`chmod +x /usr/local/bin/bearbk-converter`
+```
+cp bearbk-converter.sh /usr/local/bin/bearbk-converter
+chmod +x /usr/local/bin/bearbk-converter
+```
 
 ## Basic Usage
 
